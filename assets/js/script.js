@@ -5,6 +5,7 @@ var choice1 = document.getElementById('choice1');
 var choice2 = document.getElementById('choice2');
 var choice3 = document.getElementById('choice3');
 var choice4 = document.getElementById('choice4');
+var answerStatus= document.getElementById('answer-staus');
 
 var questionsKey=[
     {
@@ -71,9 +72,35 @@ choice3.textContent= displayQuestion.choice3;
 choice4.textContent= displayQuestion.choice4;
 }
 
+function endGame(){
+    questions.textContent= "Thanks for playing!";
+    answers.style.display="none";
+    answerStatus.style.display="none";
 
+}
+
+function checkAnswer(userChoice){
+    if (userChoice== questionsKey[currentQuestion].answer){
+        answerStatus.textContent="Horray!"
+    }else{
+        answerStatus.textContent="☹️"
+    }
+
+    if (currentQuestion < lastQuestion){
+        currentQuestion++;
+        createQuestions();
+    }else{
+        endGame();
+    }
+     
+}
 
 function startQuiz(){
 createQuestions();
 }
 startButton.addEventListener("click", startQuiz);
+
+choice1.addEventListener("click", function(){checkAnswer("choice1")});
+choice2.addEventListener("click", function() {checkAnswer("choice2")});
+choice3.addEventListener("click", function() {checkAnswer("choice3")});
+choice4.addEventListener("click", function() {checkAnswer("choice4")});
