@@ -6,6 +6,7 @@ var choice2 = document.getElementById('choice2');
 var choice3 = document.getElementById('choice3');
 var choice4 = document.getElementById('choice4');
 var answerStatus= document.getElementById('answer-staus');
+var timerEl = document.getElementById('timer');
 
 var questionsKey=[
     {
@@ -76,7 +77,7 @@ function endGame(){
     questions.textContent= "Thanks for playing!";
     answers.style.display="none";
     answerStatus.style.display="none";
-
+    clearInterval(timer);
 }
 
 function checkAnswer(userChoice){
@@ -84,6 +85,7 @@ function checkAnswer(userChoice){
         answerStatus.textContent="Horray!"
     }else{
         answerStatus.textContent="☹️"
+        timeLeft-=reducedTime;
     }
 
     if (currentQuestion < lastQuestion){
@@ -94,8 +96,28 @@ function checkAnswer(userChoice){
     }
      
 }
+// var for timer
+var timer
+var timeLeft=100
+var reducedTime=10
+
+function beginTimer(){
+    timer= setInterval(function(){
+        if(timeLeft>=1){
+          timeLeft--;
+        timerEl.textContent="Time: " + timeLeft;  
+        }else{
+            endGame();
+            timerEl.textContent="Time: " + 0;
+            clearInterval(timer);
+        }
+        
+
+    }, 1000);
+}
 
 function startQuiz(){
+beginTimer();   
 createQuestions();
 }
 startButton.addEventListener("click", startQuiz);
