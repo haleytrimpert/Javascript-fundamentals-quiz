@@ -62,7 +62,6 @@ var lastQuestion= questionsKey.length -1;
 
 function createQuestions(){
 var displayQuestion = questionsKey[currentQuestion];
-console.log(displayQuestion);
 questions.textContent= displayQuestion.question;
 
 startButton.style.display="none";
@@ -126,3 +125,4 @@ choice1.addEventListener("click", function(){checkAnswer("choice1")});
 choice2.addEventListener("click", function() {checkAnswer("choice2")});
 choice3.addEventListener("click", function() {checkAnswer("choice3")});
 choice4.addEventListener("click", function() {checkAnswer("choice4")});
+
