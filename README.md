@@ -9,7 +9,7 @@ This is a javascript fundamentals quiz. Press the start button to begin. The qui
 
 ![Picture 1](./assets/pics/screenshot-1.png)
 
-![Picture 2](./assets/pics/screenshot-1.png)
+![Picture 2](./assets/pics/screenshot-2.png)
 
 
 ## Link
